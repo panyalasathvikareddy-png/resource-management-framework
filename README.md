@@ -106,6 +106,4 @@ After deploying, add your hosting domain under **Authentication → Settings →
 - Resume uploads are not active. Firebase Storage is configured but commented out in `app.config.ts`, so the resume field only stores a link.
 - Some development dependencies report audit warnings. They don't affect the deployed app, but should be updated over time with `npm audit fix`.
 
-## License
 
-Add your license here.
