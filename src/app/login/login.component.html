@@ -1,0 +1,25 @@
+<!-- Animated Background Lines -->
+<div class="lines">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</div>
+
+<!-- Login Container (your existing code) -->
+<div class="login-wrapper">
+  <div class="container">
+    <h2>Login</h2>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <form (ngSubmit)="login()" class="mb-3">
+      <label>Email</label>
+      <input class="form-control mb-2" type="email" [(ngModel)]="email" name="email" required>
+      <label>Password</label>
+      <input class="form-control mb-2" type="password" [(ngModel)]="password" name="password" required>
+      <label>Manager Access Code (Optional)</label>
+      <input class="form-control mb-2" type="text" [(ngModel)]="managerCode" name="managerCode">
+      <button class="btn btn-primary w-100">Login</button>
+    </form>
+    <button (click)="loginWithGoogle()" class="btn btn-danger w-100">Login with Google</button>
+  </div>
+</div>

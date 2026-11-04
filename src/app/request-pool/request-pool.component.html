@@ -1,0 +1,50 @@
+<div class="request-container">
+  <app-navbar></app-navbar>
+  <div class="upper-container">
+    <div class="table-container">
+      <h2 class="text-center mt-4">Request Pool</h2>
+
+      <table *ngIf="requestedResources.length > 0" class="table table-bordered table-striped mt-3">
+        <thead class="table-dark">
+          <tr>
+            <th>Select</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Skillset</th>
+            <th>Primary Skill</th>
+            <th>Experience</th>
+            <th>Designation</th>
+            <th>Resume</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let res of requestedResources">
+            <td>
+              <span *ngIf="res.allocated" class="green">Allocated to project</span>
+              <input *ngIf="!res.allocated" type="checkbox" [(ngModel)]="res.selected" />
+            </td>
+            <td>{{ res.id }}</td>
+            <td>{{ res.name }}</td>
+            <td>{{ res.skillset }}</td>
+            <td>{{ res.primarySkill }}</td>
+            <td>{{ res.experience }}</td>
+            <td>{{ res.designation }}</td>
+            <td>
+              <a *ngIf="res.resumeUrl" [href]="res.resumeUrl" target="_blank">View</a>
+              <span *ngIf="!res.resumeUrl">No file</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div *ngIf="requestedResources.length > 0" class="text-center mt-3" class="btns-container">
+        <button class="btn btn-success button1 me-2" (click)="bulkAccept()">Accept</button>
+        <button class="btn btn-danger button2" (click)="bulkReject()">Reject</button>
+      </div>
+
+      <p *ngIf="requestedResources.length === 0" class="text-center text-muted mt-4">
+        No requests yet.
+      </p>
+    
+  </div>
+</div>

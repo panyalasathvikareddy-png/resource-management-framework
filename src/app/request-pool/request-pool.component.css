@@ -1,0 +1,45 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  background: white;
+  color: black;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+thead {
+  background-color: #f2f2f2;
+}
+.request-container{
+  
+    display: flex;   
+}
+
+.upper-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  
+}
+.button1{
+  background-color: #77dd77;
+  border-width: 0px;
+  color: black;
+  font-weight: bold;
+}
+.button2{
+  background-color: #FF6961;
+  border-width: 0px;
+  font-weight: bold;
+}
+.green{
+  color: green;
+  font-weight: bold;
+}
+

@@ -1,0 +1,49 @@
+<div class="resource-table">
+  <app-navbar></app-navbar>
+  <div class="container">
+    <h1 class="text-center mb-4">Resource Pool</h1>
+
+    <table *ngIf="resources.length > 0" class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Select</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Skillset</th>
+          <th>Primary Skill</th>
+          <th>Experience</th>
+          <th>Designation</th>
+          <th>Resume</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let res of resources">
+          <td>
+            <ng-container *ngIf="!res.requested; else sentLabel">
+              <input type="checkbox" [(ngModel)]="res.selected" />
+            </ng-container>
+            <ng-template #sentLabel>
+              <span class="text-success fw-bold">Selected</span>
+            </ng-template>
+          </td>
+          <td>{{ res.id }}</td>
+          <td>{{ res.name }}</td>
+          <td>{{ res.skillset }}</td>
+          <td>{{ res.primarySkill }}</td>
+          <td>{{ res.experience }}</td>
+          <td>{{ res.designation }}</td>
+          <td>
+            <a *ngIf="res.resumeUrl" [href]="res.resumeUrl" target="_blank">View</a>
+            <span *ngIf="!res.resumeUrl">No file</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button (click)="sendToRequestPool()" class="btn btn-primary mt-3 button1" >Request</button>
+      <button (click)="offboardSelected()" class="btn btn-danger mt-3 ms-2 button2" >Offboard</button>
+    </div>
+
+    <p *ngIf="resources.length === 0" class="text-center mt-4">No resources submitted yet.</p>
+  </div>
+</div>

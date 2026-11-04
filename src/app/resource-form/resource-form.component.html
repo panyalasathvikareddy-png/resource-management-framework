@@ -1,0 +1,72 @@
+<div class="form-container">
+  <app-navbar></app-navbar>
+
+  <div class="container form-content">
+    <h1 class="text-center mt-4 mb-3">Resource Form</h1>
+    <div class="d-flex flex-column align-items-center">
+      <div class="container mt-4">
+        <button class="btn btn-secondary float-end" (click)="logout()">Logout</button>
+        
+        <!-- Your existing form content -->
+      </div>
+
+      <form (ngSubmit)="submit($event)" #resourceForm="ngForm" class="d-flex flex-column gap-3" novalidate>
+        <input
+          [(ngModel)]="resource.name"
+          name="name"
+          placeholder="Name"
+          class="form-control"
+          required
+        />
+
+        <div class="scrollable-checkboxes border rounded p-3" style="max-height: 120px; overflow-y: auto;">
+          <label *ngFor="let skill of skillOptions" class="me-3">
+            <input
+              type="checkbox"
+              [checked]="resource.skillset.includes(skill)"
+              (change)="toggleSkillSelection($event, skill)"
+              name="skillset"
+            />
+            {{ skill }}
+          </label>
+        </div>
+
+        <input
+          [(ngModel)]="resource.primarySkill"
+          name="primarySkill"
+          placeholder="Primary Skill"
+          class="form-control"
+          required
+        />
+
+        <input
+          type="number"
+          [(ngModel)]="resource.experience"
+          name="experience"
+          placeholder="Years of Experience"
+          class="form-control"
+          min="0"
+          required
+        />
+
+        <input
+          [(ngModel)]="resource.designation"
+          name="designation"
+          placeholder="Designation"
+          class="form-control"
+          required
+        />
+
+        <input
+          type="text"
+          [(ngModel)]="resource.resumeUrl"
+          name="resumeUrl"
+          placeholder="Paste public file URL"
+          class="form-control"
+        />
+
+        <button type="submit" [disabled]="isSubmitting" class="btn btn-primary w-100">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
